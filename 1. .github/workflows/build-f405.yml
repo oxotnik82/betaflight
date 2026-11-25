@@ -1,0 +1,22 @@
+name: Build SPEEDYBEEF405V3
+on:
+  push:
+    branches: [ oxotnik82-patch-1 ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download board config
+        run: |
+          mkdir -p src/config/configs/SPEEDYBEEF405V3
+          curl -sL https://githubusercontent.com -o src/config/configs/SPEEDYBEEF405V3/config.h
+      - name: Build firmware
+        run: |
+          make arm_sdk_install
+          make TARGET=SPEEDYBEEF405V3 EXTRA_FLAGS="-DUSE_VTX_SMARTAUDIO"
+      - name: Upload HEX
+        uses: actions/upload-artifact@v4
+        with:
+          name: betaflight_SPEEDYBEEF405V3
+          path: obj/*.hex
