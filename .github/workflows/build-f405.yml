@@ -11,7 +11,7 @@ jobs:
         run: |
           make configs
           make arm_sdk_install
-          make SPEEDYBEEF405V3 EXTRA_FLAGS="-DUSE_VTX_SMARTAUDIO"
+          make -j$(nproc) SPEEDYBEEF405V3
       - name: Upload HEX
         uses: actions/upload-artifact@v4
         with:
