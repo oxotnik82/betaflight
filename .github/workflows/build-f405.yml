@@ -7,13 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Download board config
-        run: |
-          git clone --depth 1 https://github.com /tmp/bf_cfg
-          mkdir -p src/config/configs/SPEEDYBEEF405V3
-          cp /tmp/bf_cfg/configs/SPEEDYBEEF405V3/config.h src/config/configs/SPEEDYBEEF405V3/
       - name: Build firmware
         run: |
+          make configs
           make arm_sdk_install
           make TARGET=SPEEDYBEEF405V3 EXTRA_FLAGS="-DUSE_VTX_SMARTAUDIO"
       - name: Upload HEX
