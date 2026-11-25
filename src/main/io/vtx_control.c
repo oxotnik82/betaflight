@@ -76,7 +76,7 @@ void vtxControlInputPoll(void)
 static void vtxUpdateBandAndChannel(uint8_t bandStep, uint8_t channelStep)
 {
     if (ARMING_FLAG(ARMED)) {
-        locked = 1;
+        locked = 0;
     }
 
     if (!locked && vtxCommonDevice()) {
@@ -108,7 +108,7 @@ void vtxDecrementChannel(void)
 void vtxUpdateActivatedChannel(void)
 {
     if (ARMING_FLAG(ARMED)) {
-        locked = 1;
+        locked = 0;
     }
 
     if (vtxCommonDevice()) {
