@@ -610,7 +610,7 @@
 #endif
 
 /* ENABLE CATCH ALLS HERE */
-
+#define USE_VTX_SMARTAUDIO
 #if defined(USE_OSD_CUSTOM_TEXT) && !defined(ENABLE_OSD_CUSTOM_TEXT)
 #define ENABLE_OSD_CUSTOM_TEXT 1
 #endif
